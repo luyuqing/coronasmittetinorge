@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Number of Confirmed Coronavirus Cases in Norway</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h4>&nbsp;Total confirmed cases in Norway: 19, Updated at: 2020-Mar-01 20:40:00 by luyuqing0708@gmail.com</h4>
+    <h4>&nbsp;The text on ballons 🎈 is random case label, the number on cirlces 🔵 is total number of confirmed cases in this area. Zoom in/out or click for number on different regional level</h4>
+    <h4>&nbsp;Utilized public data from news media eg. VG, therefore location for each case can only be traced down to kommune level, eg. Bærum</h4>
+    <div id="map"></div>
+    <script>
+
+      function initMap() {
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: {lat: 62.3507604, lng: 6.7845958}
+        });
+
+        // Create an array of alphabetical characters used to label the markers.
+          var labels = ['case-1-Tromsø','case-2-Oslo', 'case-3-Oslo', 'case-4-Oslo', 'case-5-Bærum', 'case-6-Bergen',
+        'case-7-Bergen', 'case-8-Bergen', 'case-9-Bergen', 'case-10-Bergen',
+        'case-11-Bergen','case-12-Bergen', 'case-13-Ullevål', 'case-14-Ullevål', 'case-15-Ullevål',
+        'case-16-Ullevål', 'case-17-Ullevål', 'case-18-Enebakk ', 'case-19-Enebakk ', 'case-20-Enebakk'];
+
+        // Add some markers to the map.
+        // Note: The code uses the JavaScript Array.prototype.map() method to
+        // create an array of markers based on a given "locations" array.
+        // The map() method here has nothing to do with the Google Maps API.
+        var markers = locations.map(function(location, i) {
+          return new google.maps.Marker({
+            position: location,
+            label: labels[i % labels.length]
+          });
+        });
+
+        // Add a marker clusterer to manage the markers.
+        var markerCluster = new MarkerClusterer(map, markers,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+      }
+      var locations = [
+        {lat: 69.6651926, lng: 18.7776704}, // Tromsø 1
+        {lat: 59.9137808, lng: 10.6450355}, // Oslo 3
+        {lat: 59.9137808, lng: 10.6450355},
+        {lat: 59.9137808, lng: 10.6450355},
+        {lat: 59.9289092, lng: 10.362972}, // Bærum 1
+        {lat: 60.3648911, lng: 5.148998}, // Bergen 6
+        {lat: 60.3648911, lng: 5.148998},
+        {lat: 60.3648911, lng: 5.148998},
+        {lat: 60.3648911, lng: 5.148998},
+        {lat: 60.3648911, lng: 5.148998},
+        {lat: 60.3648911, lng: 5.148998},
+        {lat: 59.9429743, lng: 10.7147129}, // Ullevål 5
+        {lat: 59.9429743, lng: 10.7147129},
+        {lat: 59.9429743, lng: 10.7147129},
+        {lat: 59.9429743, lng: 10.7147129},
+        {lat: 59.9429743, lng: 10.7147129},
+        {lat: 59.769153, lng: 10.9477309}, // Enebakk 3
+        {lat: 59.769153, lng: 10.9477309},
+        {lat: 59.769153, lng: 10.9477309}
+      ]
+    </script>
+    <!-- Replace following script src -->
+    <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>>
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCU8AOyOFfPBH5aZnphqXhg6aeD6dix0nk&callback=initMap">
+    </script>
+  </body>
+</html>
