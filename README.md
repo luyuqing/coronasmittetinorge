@@ -1,0 +1,1 @@
+Numbers on confirmed coronavirus infected cases in Norway.
