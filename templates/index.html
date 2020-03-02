@@ -20,7 +20,7 @@
   </head>
   <body>
     <h4>&nbsp;&nbsp;Confirmed number of coronavirus cases based on area in Norway, zoom in/out or click numbers for more info.</h4>
-    <h4>&nbsp;&nbsp;Total confirmed cases: <span style="color: red;">19</span>, updated at: <span style="color: blue;">2020-Mar-01 20:40:00</span></h4>
+    <h4>&nbsp;&nbsp;Total confirmed cases: <span id='total_number' style="color: red;"></span>, updated at: <span style="color: blue;">2020-Mar-01 20:40:00</span></h4>
     <div id="map"></div>
     <div>
     <h4>&nbsp;&nbsp;PLEASE NOTE: This website utilized public data from norwegian news media eg. NRK, VG, therefore location for each case can only be traced down to kommune level, eg. Bærum, Bergen. Text on ballon 🎈 is arbitrary case label, CANNOT represent the exact location of case. Number on cirlce 🔵 is the total number of confirmed cases in particular area. </h4>
@@ -63,6 +63,8 @@
           {label:'case-18-Enebakk', area: 'Enebakk', lat: 59.7691733, lng: 10.9477509},
           {label:'case-19-Enebakk', area: 'Enebakk', lat: 59.7691933, lng: 10.9477709}
         ]
+
+        document.getElementById('total_number').textContent = data.length;
 
         const labels = data.map(x => x.label);
         const locations = data.map(function(x){return {lat: x.lat, lng: x.lng}});
