@@ -19,14 +19,16 @@
     </style>
   </head>
   <body>
-    <h4>&nbsp;Total confirmed cases in Norway: <span style="color: red;">19</span>, Updated at: <span style="color: blue;">2020-Mar-01 20:40:00</span></h4>
-    <h4>&nbsp;The text on ballons 🎈 is random case label, the number on cirlces 🔵 is total number of confirmed cases in this area. Zoom in/out or click for number on different regional level</h4>
-    <h4>&nbsp;Utilized public data from news media eg. VG, therefore location for each case can only be traced down to kommune level, eg. Bærum</h4>
+    <h4>&nbsp;&nbsp;Confirmed number of coronavirus cases based on area in Norway, zoom in/out or click numbers for more info.</h4>
+    <h4>&nbsp;&nbsp;Total confirmed cases: <span style="color: red;">19</span>, updated at: <span style="color: blue;">2020-Mar-01 20:40:00</span></h4>
     <div id="map"></div>
-    <div style="line-height: 0.9em;">
-    <h4>Developer and contact for data mismatch/breach/update: luyuqing0708@gmail.com</h4>
-    <h4>News sources for this website's update:</h4>
-    <a href="url">https://www.vg.no/nyheter/innenriks/i/K375oe/nye-tall-totalt-19-corona-smittede-i-norge</a>
+    <div>
+    <h4>&nbsp;&nbsp;PLEASE NOTE: This website utilized public data from norwegian news media eg. NRK, VG, therefore location for each case can only be traced down to kommune level, eg. Bærum, Bergen. Text on ballon 🎈 is arbitrary case label, CANNOT represent the exact location of case. Number on cirlce 🔵 is the total number of confirmed cases in particular area. </h4>
+    <h4>&nbsp;&nbsp;Developer and contact: luyuqing0708@gmail.com</h4>
+    <h4>&nbsp;&nbsp;Sources for this website's data:</h4>
+    <ul>
+    <li><a href="https://www.vg.no/nyheter/innenriks/i/K375oe/nye-tall-totalt-19-corona-smittede-i-norge">nye-tall-totalt-19-corona-smittede-i-norge</a></li>
+    </ul>
     </div>
     <br></br>
     <script>
@@ -39,11 +41,11 @@
         });
 
         // Create an array of alphabetical characters used to label the markers.
-        var labels = ['case-1-Tromsø','case-2-Oslo', 'case-3-Oslo', 'case-4-Oslo',
-        'case-5-Bærum', 'case-6-Bergen', 'case-7-Bergen', 'case-8-Bergen', 'case-9-Bergen',
-        'case-10-Bergen', 'case-11-Bergen','case-12-Bergen', 'case-13-Ullevål', 'case-14-Ullevål', 'case-15-Ullevål',
-        'case-16-Ullevål', 'case-17-Ullevål', 'case-18-Enebakk ', 'case-19-Enebakk ',
-        'case-20-Enebakk'];
+        var labels = ['case-0-Tromsø','case-1-Oslo', 'case-2-Oslo', 'case-3-Oslo',
+        'case-4-Bærum', 'case-5-Bergen', 'case-6-Bergen', 'case-7-Bergen', 'case-8-Bergen',
+        'case-9-Bergen', 'case-10-Bergen','case-11-Bergen', 'case-12-Ullevål', 'case-13-Ullevål',
+        'case-14-Ullevål', 'case-15-Ullevål', 'case-16-Ullevål', 'case-17-Enebakk ', 'case-18-Enebakk ',
+        'case-19-Enebakk'];
 
         // Add some markers to the map.
         // Note: The code uses the JavaScript Array.prototype.map() method to
@@ -63,23 +65,23 @@
       var locations = [
         {lat: 69.6651926, lng: 18.7776704}, // Tromsø 1
         {lat: 59.9137808, lng: 10.6450355}, // Oslo 3
-        {lat: 59.9137808, lng: 10.6450355},
-        {lat: 59.9137808, lng: 10.6450355},
+        {lat: 59.9138008, lng: 10.6450555},
+        {lat: 59.9138208, lng: 10.6450755},
         {lat: 59.9289092, lng: 10.362972}, // Bærum 1
         {lat: 60.3648911, lng: 5.148998}, // Bergen 6
-        {lat: 60.3648911, lng: 5.148998},
-        {lat: 60.3648911, lng: 5.148998},
-        {lat: 60.3648911, lng: 5.148998},
-        {lat: 60.3648911, lng: 5.148998},
-        {lat: 60.3648911, lng: 5.148998},
+        {lat: 60.3649111, lng: 5.149198},
+        {lat: 60.3649311, lng: 5.149398},
+        {lat: 60.3649511, lng: 5.149598},
+        {lat: 60.3649711, lng: 5.149798},
+        {lat: 60.3649911, lng: 5.149998},
         {lat: 59.9429743, lng: 10.7147129}, // Ullevål 5
-        {lat: 59.9429743, lng: 10.7147129},
-        {lat: 59.9429743, lng: 10.7147129},
-        {lat: 59.9429743, lng: 10.7147129},
-        {lat: 59.9429743, lng: 10.7147129},
-        {lat: 59.769153, lng: 10.9477309}, // Enebakk 3
-        {lat: 59.769153, lng: 10.9477309},
-        {lat: 59.769153, lng: 10.9477309}
+        {lat: 59.9429943, lng: 10.7147329},
+        {lat: 59.9430143, lng: 10.7147529},
+        {lat: 59.9430343, lng: 10.7147729},
+        {lat: 59.9430543, lng: 10.7147929},
+        {lat: 59.7691533, lng: 10.9477309}, // Enebakk 3
+        {lat: 59.7691733, lng: 10.9477509},
+        {lat: 59.7691933, lng: 10.9477709}
       ]
     </script>
     <!-- Replace following script src -->
