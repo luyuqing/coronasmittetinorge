@@ -25,7 +25,9 @@
     <div>
     <h4>&nbsp;&nbsp;PLEASE NOTE: This website utilized public data from norwegian news media eg. NRK, VG, therefore location for each case can only be traced down to kommune level, eg. Bærum, Bergen. Text on ballon 🎈 is arbitrary case label, CANNOT represent the exact location of case. Number on cirlce 🔵 is the total number of confirmed cases in particular area. </h4>
     <h4>&nbsp;&nbsp;Developer and contact: luyuqing0708@gmail.com</h4>
-    <h4>&nbsp;&nbsp;Sources for this website's data:</h4>
+    <h4>&nbsp;&nbsp;Numbers based on area:</h4>
+    <ul id='area_number'></ul>
+    <h4>&nbsp;&nbsp;Sources links for this website's data:</h4>
     <ul>
     <li><a href="https://www.vg.no/nyheter/innenriks/i/K375oe/nye-tall-totalt-19-corona-smittede-i-norge">nye-tall-totalt-19-corona-smittede-i-norge</a></li>
     </ul>
@@ -40,12 +42,45 @@
           center: {lat: 62.3507604, lng: 6.7845958}
         });
 
-        // Create an array of alphabetical characters used to label the markers.
-        var labels = ['case-0-Tromsø','case-1-Oslo', 'case-2-Oslo', 'case-3-Oslo',
-        'case-4-Bærum', 'case-5-Bergen', 'case-6-Bergen', 'case-7-Bergen', 'case-8-Bergen',
-        'case-9-Bergen', 'case-10-Bergen','case-11-Bergen', 'case-12-Ullevål', 'case-13-Ullevål',
-        'case-14-Ullevål', 'case-15-Ullevål', 'case-16-Ullevål', 'case-17-Enebakk ', 'case-18-Enebakk ',
-        'case-19-Enebakk'];
+        const data = [
+          {label: 'case-1-Tromsø', area: 'Tromsø', lat: 69.6651926, lng: 18.7776704},
+          {label: 'case-2-Oslo', area: 'Oslo', lat: 59.9137808, lng: 10.6450355},
+          {label: 'case-3-Oslo', area: 'Oslo', lat: 59.9138008, lng: 10.6450555},
+          {label: 'case-4-Oslo', area: 'Oslo', lat: 59.9138208, lng: 10.6450755},
+          {label: 'case-5-Bærum', area: 'Bærum', lat: 59.9289092, lng: 10.362972},
+          {label:'case-6-Bergen', area: 'Bergen', lat: 60.3648911, lng: 5.148998},
+          {label:'case-7-Bergen', area: 'Bergen', lat: 60.3649111, lng: 5.149198},
+          {label:'case-8-Bergen', area: 'Bergen', lat: 60.3649311, lng: 5.149398},
+          {label:'case-9-Bergen', area: 'Bergen', lat: 60.3649511, lng: 5.149598},
+          {label:'case-10-Bergen', area: 'Bergen', lat: 60.3649711, lng: 5.149798},
+          {label:'case-11-Bergen', area: 'Bergen', lat: 60.3649911, lng: 5.149998},
+          {label:'case-12-Ullevål', area: 'Ullevål', lat: 59.9429743, lng: 10.7147129},
+          {label:'case-13-Ullevål', area: 'Ullevål', lat: 59.9429943, lng: 10.7147329},
+          {label:'case-14-Ullevål', area: 'Ullevål', lat: 59.9430143, lng: 10.7147529},
+          {label:'case-15-Ullevål', area: 'Ullevål', lat: 59.9430343, lng: 10.7147729},
+          {label:'case-16-Ullevål', area: 'Ullevål', lat: 59.9430543, lng: 10.7147929},
+          {label:'case-17-Enebakk', area: 'Enebakk', lat: 59.7691533, lng: 10.9477309},
+          {label:'case-18-Enebakk', area: 'Enebakk', lat: 59.7691733, lng: 10.9477509},
+          {label:'case-19-Enebakk', area: 'Enebakk', lat: 59.7691933, lng: 10.9477709}
+        ]
+
+        const labels = data.map(x => x.label);
+        const locations = data.map(function(x){return {lat: x.lat, lng: x.lng}});
+
+        var defaultDict = new Proxy({}, {
+          get: (target, name) => name in target ? target[name] : 0
+        })
+
+        for (i=0; i<data.length; i++) {
+          defaultDict[data[i].area] += 1
+        }
+
+        for (var prop in defaultDict) {
+          var line = prop + ': ' +  defaultDict[prop];
+          var li = document.createElement("li");
+          li.appendChild(document.createTextNode(line));
+          document.getElementById("area_number").appendChild(li);
+        }
 
         // Add some markers to the map.
         // Note: The code uses the JavaScript Array.prototype.map() method to
@@ -62,27 +97,7 @@
         var markerCluster = new MarkerClusterer(map, markers,
             {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
       }
-      var locations = [
-        {lat: 69.6651926, lng: 18.7776704}, // Tromsø 1
-        {lat: 59.9137808, lng: 10.6450355}, // Oslo 3
-        {lat: 59.9138008, lng: 10.6450555},
-        {lat: 59.9138208, lng: 10.6450755},
-        {lat: 59.9289092, lng: 10.362972}, // Bærum 1
-        {lat: 60.3648911, lng: 5.148998}, // Bergen 6
-        {lat: 60.3649111, lng: 5.149198},
-        {lat: 60.3649311, lng: 5.149398},
-        {lat: 60.3649511, lng: 5.149598},
-        {lat: 60.3649711, lng: 5.149798},
-        {lat: 60.3649911, lng: 5.149998},
-        {lat: 59.9429743, lng: 10.7147129}, // Ullevål 5
-        {lat: 59.9429943, lng: 10.7147329},
-        {lat: 59.9430143, lng: 10.7147529},
-        {lat: 59.9430343, lng: 10.7147729},
-        {lat: 59.9430543, lng: 10.7147929},
-        {lat: 59.7691533, lng: 10.9477309}, // Enebakk 3
-        {lat: 59.7691733, lng: 10.9477509},
-        {lat: 59.7691933, lng: 10.9477709}
-      ]
+
     </script>
     <!-- Replace following script src -->
     <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
