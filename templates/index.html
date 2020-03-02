@@ -30,6 +30,7 @@
     <li><a href="https://www.vg.no/nyheter/innenriks/i/K375oe/nye-tall-totalt-19-corona-smittede-i-norge">nye-tall-totalt-19-corona-smittede-i-norge</a></li>
     </ul>
     </div>
+    <p id="labels" style="display: none;">{{ labels }}</p>
     <br></br>
     <script>
 
@@ -41,11 +42,9 @@
         });
 
         // Create an array of alphabetical characters used to label the markers.
-        var labels = ['case-0-Tromsø','case-1-Oslo', 'case-2-Oslo', 'case-3-Oslo',
-        'case-4-Bærum', 'case-5-Bergen', 'case-6-Bergen', 'case-7-Bergen', 'case-8-Bergen',
-        'case-9-Bergen', 'case-10-Bergen','case-11-Bergen', 'case-12-Ullevål', 'case-13-Ullevål',
-        'case-14-Ullevål', 'case-15-Ullevål', 'case-16-Ullevål', 'case-17-Enebakk ', 'case-18-Enebakk ',
-        'case-19-Enebakk'];
+        var labels = document.getElementById("labels");
+        console.log(labels);
+        console.log(typeof(labels));
 
         // Add some markers to the map.
         // Note: The code uses the JavaScript Array.prototype.map() method to
