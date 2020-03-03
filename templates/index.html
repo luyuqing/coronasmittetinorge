@@ -20,7 +20,7 @@
   </head>
   <body>
     <h4>&nbsp;&nbsp;Confirmed number of coronavirus cases based on area in Norway, zoom in/out or click numbers for more info.</h4>
-    <h4>&nbsp;&nbsp;Total confirmed cases: <span id='total_number' style="color: red;"></span>, updated at: <span style="color: blue;">2020-Mar-03 09:00:00</span>, scroll down below map for area numbers.</h4>
+    <h4>&nbsp;&nbsp;Total confirmed cases: <span id='total_number' style="color: red;"></span>, updated at: <span style="color: blue;">2020-Mar-03 11:30:00</span>, scroll down below map for area numbers.</h4>
     <div id="map"></div>
     <div>
     <h4>&nbsp;&nbsp;PLEASE NOTE: This website utilized public data from norwegian media eg. FHI, NRK, VG, therefore location for each case can only be traced down to kommune level, eg. Bærum, Bergen. Text on ballon 🎈 is arbitrary case label, CANNOT represent the exact location of case. Number on cirlce 🔵 is the total number of confirmed cases in particular area. </h4>
@@ -28,6 +28,7 @@
     <ul id='area_number'></ul>
     <h4>&nbsp;&nbsp;Sources links for this website's data:</h4>
     <ul>
+    <li><a href="https://www.vg.no/nyheter/innenriks/i/9vdv4w/to-bekreftet-smittet-i-drammen">to-bekreftet-smittet-i-drammen</a></li>
     <li><a href="https://www.vg.no/nyheter/innenriks/i/RRpR8A/ytterligere-en-ansatt-smittet-paa-ullevaal">ytterligere-en-ansatt-smittet-paa-ullevaal</a></li>
     <li><a href="https://www.nrk.no/vestland/alt-du-treng-a-vite-om-koronaviruset-i-vestland-1.14925249">alt-du-treng-a-vite-om-koronaviruset-i-vestland</a></li>
     <li><a href="https://fhi.no/nyheter/2020/oppdaterte-tall-pa-antall-smittede-med-koronavirus-i-norge3/">oppdaterte-tall-pa-antall-smittede-med-koronavirus-i-norge3</a></li>
@@ -79,6 +80,8 @@
           {label: 'case-24-Øygarden', area: 'Øygarden', lat: 60.329089, lng: 5.0528155},
           {label: 'case-25-Øygarden', area: 'Øygarden', lat: 60.329279, lng: 5.0528355},
           {label: 'case-26-Oslo', area: 'Oslo', lat: 59.9139008, lng: 10.6450555},
+          {label: 'case-27-Drammen', area: 'Drammen', lat: 59.7297215, lng: 10.1992825},
+          {label: 'case-28-Drammen', area: 'Drammen', lat: 59.7297415, lng: 10.1993025},
         ]
 
         document.getElementById('total_number').textContent = data.length;
