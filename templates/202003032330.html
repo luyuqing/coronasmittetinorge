@@ -8,7 +8,7 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 85%;
+        height: 100%;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -20,13 +20,13 @@
   </head>
   <body>
     <h4>&nbsp;&nbsp;Confirmed ie. tested positive coronavirus infected cases in Norway, zoom in/out or scroll below map for more info.</h4>
-    <h4>&nbsp;&nbsp;Total: <span id='total_number' style="color: red;"></span>, cured/recovered <span style="color: green;">0</span>, updated at: <span style="color: blue;">2020-Mar-04 00:30:00</span></h4>
+    <h4>&nbsp;&nbsp;Total: <span id='total_number' style="color: red;"></span>, cured/recovered <span style="color: green;">0</span>, updated at: <span style="color: blue;">2020-Mar-03 23:30:00</span></h4>
     <div id="map"></div>
     <div>
-    <h4>&nbsp;&nbsp;PLEASE NOTE: This website utilizes public info from FHI, NRK, VG etc. therefore location for individual case can only be traced to kommune level. The location of red marker <img style="width:15px;height:18px;" src=https://recoveryannearundel.org/wp-content/uploads/2016/09/google-maps-marker-for-residencelamontagne-hi.png > CANNOT represent the accurate location of case.</h4>
+    <h4>&nbsp;&nbsp;PLEASE NOTE: This website utilized public data from norwegian media eg. FHI, NRK, VG, therefore location for each case can only be traced down to kommune level, eg. Bærum, Bergen. Text on ballon 🎈 is arbitrary case label, CANNOT represent the exact location of case. Number on cirlce 🔵 is the total number of confirmed cases in particular area. </h4>
     <h4>&nbsp;&nbsp;Numbers based on area:</h4>
     <ul id='area_number'></ul>
-    <h4>&nbsp;&nbsp;Sources for this website's data:</h4>
+    <h4>&nbsp;&nbsp;Sources links for this website's data:</h4>
     <ul>
     <!-- <li><a href=""></a></li> -->
     <li><a href="https://www.vg.no/nyheter/innenriks/i/dO2l2z/fhi-fraraader-reiser-til-nord-italia">fhi-fraraader-reiser-til-nord-italia</a></li>
@@ -41,7 +41,6 @@
     </ul>
     <h4>&nbsp;&nbsp;History data archives:</h4>
     <ul>
-    <li><a href="/history?dt=202003032330">history-data-2020-0303-2330</a></li>
     <li><a href="/history?dt=202003022230">history-data-2020-0302-2230</a></li>
     <li><a href="/history?dt=202003021630">history-data-2020-0302-1630</a></li>
     </ul>
