@@ -20,7 +20,7 @@
   </head>
   <body>
     <h4>&nbsp;&nbsp;Confirmed ie. tested positive coronavirus infected cases in Norway, zoom in/out or scroll below map for more info.</h4>
-    <h4>&nbsp;&nbsp;Total: <span id='total_number' style="color: red;"></span>, cured/recovered <span style="color: green;">0</span>, updated at: <span style="color: blue;">2020-Mar-03 22:30:00</span></h4>
+    <h4>&nbsp;&nbsp;Total: <span id='total_number' style="color: red;"></span>, cured/recovered <span style="color: green;">0</span>, updated at: <span style="color: blue;">2020-Mar-03 23:30:00</span></h4>
     <div id="map"></div>
     <div>
     <h4>&nbsp;&nbsp;PLEASE NOTE: This website utilized public data from norwegian media eg. FHI, NRK, VG, therefore location for each case can only be traced down to kommune level, eg. Bærum, Bergen. Text on ballon 🎈 is arbitrary case label, CANNOT represent the exact location of case. Number on cirlce 🔵 is the total number of confirmed cases in particular area. </h4>
@@ -58,7 +58,7 @@
         });
 
         const data = [
-          {label: 'case-1-Tromsø(Troms-og-Finnmark)', area: 'Tromsø(Troms-og-Finnmark)', lat: 69.6511986, lng: 18.9469733},
+          {label: 'case-1-Tromsø(Troms og Finnmark)', area: 'Tromsø(Troms og Finnmark)', lat: 69.6511986, lng: 18.9469733},
           {label: 'case-2-Oslo', area: 'Oslo', lat: 59.9137808, lng: 10.6450355},
           {label: 'case-3-Oslo', area: 'Oslo', lat: 59.9138008, lng: 10.6450555},
           {label: 'case-4-Oslo', area: 'Oslo', lat: 59.9138208, lng: 10.6450755},
@@ -86,10 +86,10 @@
           {label: 'case-26-Drammen(Viken)', area: 'Drammen(Viken)', lat: 59.7297215, lng: 10.1992825},
           {label: 'case-27-Drammen(Viken)', area: 'Drammen(Viken)', lat: 59.7297415, lng: 10.1993025},
           {label: 'case-28-Kristiansand(Agder)', area: 'Kristiansand(Agder)', lat: 58.1581037, lng: 7.9730998},
-          {label: 'case-29-Troms-og-Finnmark', area: 'Troms-og-Finnmark', lat: 69.6512186, lng: 18.9469933},
-          {label: 'case-30-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.4011568, lng: 5.301325},
-          {label: 'case-31-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.4011768, lng: 5.301525},
-          {label: 'case-32-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.4011968, lng: 5.301725},
+          {label: 'case-29-Ukjent(Troms og Finnmark)', area: 'Ukjent(Troms og Finnmark)', lat: 69.6512186, lng: 18.9469933},
+          {label: 'case-30-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3931568, lng: 5.331325},
+          {label: 'case-31-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3931768, lng: 5.331525},
+          {label: 'case-32-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3931968, lng: 5.331725},
           {label: 'case-33-Ås(Viken)', area: 'Ås(Viken)', lat: 59.6616895, lng: 10.7556133},
         ]
 
@@ -98,20 +98,55 @@
         const labels = data.map(x => x.label);
         const locations = data.map(function(x){return {lat: x.lat, lng: x.lng}});
 
-        var defaultDict = new Proxy({}, {
-          get: (target, name) => name in target ? target[name] : 0
-        })
+        var area_dict = {
+          'Vestland': {'Total': 0},
+          'Rogaland': {'Total': 0},
+          'Oslo': {'Total': 0},
+          'Viken': {'Total': 0},
+          'Troms og Finnmark': {'Total': 0},
+          'Agder': {'Total': 0},
+          'Innlandet': {'Total': 0},
+          'Møre og Romsdal': {'Total': 0},
+          'Nordland': {'Total': 0},
+          'Vestfold og Telemark': {'Total': 0},
+          'Trøndelag': {'Total': 0}
+        };
 
         for (i=0; i<data.length; i++) {
-          defaultDict[data[i].area] += 1
+          if (data[i].area == 'Oslo') {
+            area_dict['Oslo']['Total'] += 1;
+          } else {
+            var kommune = data[i].area.split('(')[0]
+            var fylke = data[i].area.split('(')[1].split(')')[0];
+            area_dict[fylke]['Total'] += 1;
+            if (area_dict[fylke][kommune] === undefined) {
+              area_dict[fylke][kommune] = 1;
+            } else {
+              area_dict[fylke][kommune] += 1;
+            }
+          }
         }
 
-        for (var prop in defaultDict) {
-          var line = prop + ': ' +  defaultDict[prop];
-          var li = document.createElement("li");
-          li.appendChild(document.createTextNode(line));
-          document.getElementById("area_number").appendChild(li);
-        }
+        for (var prop in area_dict) {
+          if (area_dict[prop]['Total'] > 0) {
+            var line = prop + ': ' + area_dict[prop]['Total'];
+            var li = document.createElement("li");
+            li.appendChild(document.createTextNode(line));
+            document.getElementById("area_number").appendChild(li);
+            if (Object.keys(prop).length > 1) {
+              for (var sub_prop in area_dict[prop]) {
+                if (sub_prop != 'Total') {
+                  var sub_line = sub_prop + ': ' + area_dict[prop][sub_prop];
+                  var sub_ul = document.createElement("ul");
+                  var sub_li = document.createElement("li");
+                  sub_li.appendChild(document.createTextNode(sub_line));
+                  sub_ul.appendChild(sub_li);
+                  li.appendChild(sub_ul);
+                }
+              }
+            }
+            }
+          }
 
         // Add some markers to the map.
         // Note: The code uses the JavaScript Array.prototype.map() method to
