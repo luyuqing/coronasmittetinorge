@@ -19,8 +19,8 @@
     </style>
   </head>
   <body>
-    <h4>&nbsp;&nbsp;Confirmed number of coronavirus cases based on area in Norway, zoom in/out or click numbers for more info.</h4>
-    <h4>&nbsp;&nbsp;Total confirmed cases: <span id='total_number' style="color: red;"></span>, updated at: <span style="color: blue;">2020-Mar-03 11:30:00</span>, scroll down below map for area numbers.</h4>
+    <h4>&nbsp;&nbsp;Confirmed ie. tested positive coronavirus infected cases in Norway, zoom in/out or scroll below map for more info.</h4>
+    <h4>&nbsp;&nbsp;Total: <span id='total_number' style="color: red;"></span>, cured/recovered <span style="color: green;">0</span>, updated at: <span style="color: blue;">2020-Mar-03 12:30:00</span></h4>
     <div id="map"></div>
     <div>
     <h4>&nbsp;&nbsp;PLEASE NOTE: This website utilized public data from norwegian media eg. FHI, NRK, VG, therefore location for each case can only be traced down to kommune level, eg. Bærum, Bergen. Text on ballon 🎈 is arbitrary case label, CANNOT represent the exact location of case. Number on cirlce 🔵 is the total number of confirmed cases in particular area. </h4>
@@ -28,6 +28,8 @@
     <ul id='area_number'></ul>
     <h4>&nbsp;&nbsp;Sources links for this website's data:</h4>
     <ul>
+    <!-- <li><a href=""></a></li> -->
+    <li><a href="https://www.vg.no/nyheter/innenriks/i/zG1Gab/helsedirektoratet-32-er-smittet-av-coronaviruset-i-norge">helsedirektoratet-32-er-smittet-av-coronaviruset-i-norge</a></li>
     <li><a href="https://www.vg.no/nyheter/innenriks/i/9vdv4w/to-bekreftet-smittet-i-drammen">to-bekreftet-smittet-i-drammen</a></li>
     <li><a href="https://www.vg.no/nyheter/innenriks/i/RRpR8A/ytterligere-en-ansatt-smittet-paa-ullevaal">ytterligere-en-ansatt-smittet-paa-ullevaal</a></li>
     <li><a href="https://www.nrk.no/vestland/alt-du-treng-a-vite-om-koronaviruset-i-vestland-1.14925249">alt-du-treng-a-vite-om-koronaviruset-i-vestland</a></li>
@@ -82,6 +84,10 @@
           {label: 'case-26-Oslo', area: 'Oslo', lat: 59.9139008, lng: 10.6450555},
           {label: 'case-27-Drammen', area: 'Drammen', lat: 59.7297215, lng: 10.1992825},
           {label: 'case-28-Drammen', area: 'Drammen', lat: 59.7297415, lng: 10.1993025},
+          {label: 'case-29-Location-Unknown', area: 'Location-Unknown', lat: 61.7231296, lng: 9.1585002},
+          {label: 'case-30-Location-Unknown', area: 'Location-Unknown', lat: 61.7231496, lng: 9.1585202},
+          {label: 'case-31-Location-Unknown', area: 'Location-Unknown', lat: 61.7231696, lng: 9.1585402},
+          {label: 'case-32-Location-Unknown', area: 'Location-Unknown', lat: 61.7231896, lng: 9.1585602},
         ]
 
         document.getElementById('total_number').textContent = data.length;
