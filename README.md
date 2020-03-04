@@ -6,6 +6,6 @@ For update:
     3. add link
 
 For daily update:
-    1. copy index.html to new html, change name
+    1. copy index.html to new html, change name, close html
     2. add to history link
     3. change yesterday_number
