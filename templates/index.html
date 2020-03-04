@@ -20,7 +20,7 @@
   </head>
   <body>
     <h4>&nbsp;&nbsp;Confirmed ie. tested positive coronavirus infected cases in Norway, zoom in/out or scroll below map for more info.</h4>
-    <h4>&nbsp;&nbsp;Total: <span id='total_number' style="color: red;"></span>, cured/recovered <span style="color: green;">0</span>, updated at: <span style="color: blue;">2020-Mar-04 12:00:00</span></h4>
+    <h4>&nbsp;&nbsp;Total: <span id='total_number' style="color: red;"></span>, cured/recovered <span style="color: green;">0</span>, updated at: <span style="color: blue;">2020-Mar-04 18:20:00</span></h4>
     <div id="map"></div>
     <div>
     <h4>&nbsp;&nbsp;PLEASE NOTE: This website utilizes public info from FHI, NRK, VG etc. therefore location for individual case can only be traced to kommune level. The location of red marker <img style="width:15px;height:18px;" src=https://recoveryannearundel.org/wp-content/uploads/2016/09/google-maps-marker-for-residencelamontagne-hi.png > CANNOT represent the accurate location of case.</h4>
@@ -29,7 +29,7 @@
     <h4>&nbsp;&nbsp;Sources for this website's data:</h4>
     <ul>
     <!-- <li><a href=""></a></li> -->
-    <li><a href=""></a></li>
+    <li><a href="https://www.vg.no/nyheter/innenriks/i/kJO6PQ/fhi-56-personer-er-smittet-i-norge">fhi-56-personer-er-smittet-i-norge</a></li>
     <li><a href="https://www.vg.no/nyheter/innenriks/i/dO2l2z/fhi-fraraader-reiser-til-nord-italia">fhi-fraraader-reiser-til-nord-italia</a></li>
     <li><a href="https://www.fhi.no/nyheter/2020/oppdaterte-tall-pa-antall-smittede-med-koronavirus-i-norge4/">oppdaterte-tall-pa-antall-smittede-med-koronavirus-i-norge4</a></li>
     <li><a href="https://www.vg.no/nyheter/innenriks/i/zG1Gab/helsedirektoratet-32-er-smittet-av-coronaviruset-i-norge">helsedirektoratet-32-er-smittet-av-coronaviruset-i-norge</a></li>
@@ -100,6 +100,22 @@
           {label: 'case-38-Drammen(Viken)', area: 'Drammen(Viken)', lat: 59.7296600, lng: 10.1993600},
           {label: 'case-39-Drammen(Viken)', area: 'Drammen(Viken)', lat: 59.7296800, lng: 10.1993800},
           {label: 'case-40-Drammen(Viken)', area: 'Drammen(Viken)', lat: 59.7297000, lng: 10.1994000},
+          {label: 'case-41-Haugesund(Rogaland)', area: 'Haugesund(Rogaland)', lat: 59.4138946, lng: 5.2676924},
+          {label: 'case-42-Oslo', area: 'Oslo', lat: 59.9139208, lng: 10.6451755},
+          {label: 'case-43-Oslo', area: 'Oslo', lat: 59.9139408, lng: 10.6451955},
+          {label: 'case-44-Oslo', area: 'Oslo', lat: 59.9139608, lng: 10.6452155},
+          {label: 'case-45-Oslo', area: 'Oslo', lat: 59.9139808, lng: 10.6452355},
+          {label: 'case-46-Oslo', area: 'Oslo', lat: 59.9140008, lng: 10.6452555},
+          {label: 'case-47-Oslo', area: 'Oslo', lat: 59.9140208, lng: 10.6452755},
+          {label: 'case-48-Oslo', area: 'Oslo', lat: 59.9140408, lng: 10.6452955},
+          {label: 'case-49-Klepp(Rogaland)', area: 'Klepp(Rogaland)', lat: 58.7629815, lng: 5.6109107},
+          {label: 'case-50-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3912768, lng: 5.322525},
+          {label: 'case-51-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3912968, lng: 5.322725},
+          {label: 'case-52-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3913168, lng: 5.322925},
+          {label: 'case-53-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3913368, lng: 5.323125},
+          {label: 'case-54-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3913568, lng: 5.323325},
+          {label: 'case-55-Ukjent', area: 'Ukjent', lat: 62.3507604, lng: 6.7845958},
+          {label: 'case-56-Ukjent', area: 'Ukjent', lat: 62.3507804, lng: 6.7846158},
         ]
 
         document.getElementById('total_number').textContent = data.length;
@@ -118,12 +134,13 @@
           'Møre og Romsdal': {'Total': 0},
           'Nordland': {'Total': 0},
           'Vestfold og Telemark': {'Total': 0},
-          'Trøndelag': {'Total': 0}
+          'Trøndelag': {'Total': 0},
+          'Ukjent': {'Total': 0}
         };
 
         for (i=0; i<data.length; i++) {
-          if (data[i].area == 'Oslo') {
-            area_dict['Oslo']['Total'] += 1;
+          if (data[i].area == 'Oslo' || data[i].area == 'Ukjent') {
+            area_dict[data[i].area]['Total'] += 1;
           } else {
             var kommune = data[i].area.split('(')[0]
             var fylke = data[i].area.split('(')[1].split(')')[0];
