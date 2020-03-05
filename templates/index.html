@@ -20,7 +20,7 @@
   </head>
   <body>
     <h4>&nbsp;&nbsp;Confirmed ie. tested positive coronavirus infected cases in Norway, zoom in/out or scroll below map for more info.</h4>
-    <h4>&nbsp;&nbsp;Total: <span id='total_number' style="color: red;"></span>, new cases: <span id='new_cases_number' style="color: red;"></span>, cured/recovered <span style="color: green;">0</span>, updated at: <span style="color: blue;">2020-Mar-05 14:00:00</span></h4>
+    <h4>&nbsp;&nbsp;Total: <span id='total_number' style="color: red;"></span>, new cases: <span id='new_cases_number' style="color: red;"></span>, cured/recovered <span style="color: green;">0</span>, updated at: <span style="color: blue;">2020-Mar-05 20:00:00</span></h4>
     <p id="yesterday_number" style="display: none;">63</p>
     <div id="map"></div>
     <div>
@@ -70,6 +70,7 @@
         'Ås(Viken)': {lat: 59.6616895, lng: 10.7556133, cnt: 0},
         'Asker(Viken)': {lat: 59.9290092, lng: 10.363972, cnt: 0},
         'Lier(Viken)': {lat: 59.9290292, lng: 10.364172, cnt: 0},
+        'Fredrikstad(Viken)': {lat: 59.2315278, lng: 10.9179351},
         'Bergen(Vestland)': {lat: 60.3911568, lng: 5.321325, cnt: 0},
         'Øygarden(Vestland)': {lat: 60.329089, lng: 5.0528155, cnt: 0},
         'Stavanger(Rogaland)': {lat: 58.9498173, lng: 5.658187, cnt: 0},
@@ -82,7 +83,9 @@
         'Sel(Innlandet)': {lat: 61.840969, lng: 9.4252837, cnt: 0},
         'Ålesund(Møre og Romsdal)': {lat: 62.471420, lng: 6.148600, cnt: 0},
         'Molde(Møre og Romsdal)': {lat: 62.7429118, lng: 7.162816, cnt: 0},
-        'Ukjent': {lat: 62.9948397, lng: 7.8752033, cnt: 0},
+        'Skien(Vestfold og Telemark)': {lat: 59.1995043, lng: 9.5750582, cnt: 0},
+        'Ukjent_Kommune(Vestfold og Telemark)': {lat: 59.1717782, lng: 9.428277, cnt: 0},
+        'Ukjent_Fylke': {lat: 62.9948397, lng: 7.8752033, cnt: 0},
       };
 
       var data = [
@@ -158,6 +161,22 @@
         {label: 'case-70-Bergen(Vestland)', lat: null, lng: null},
         {label: 'case-71-Bergen(Vestland)', lat: null, lng: null},
         {label: 'case-72-Bergen(Vestland)', lat: null, lng: null},
+        {label: 'case-73-Skien(Vestfold og Telemark)', lat: null, lng: null},
+        {label: 'case-74-Ukjent_Kommune(Vestfold og Telemark)', lat: null, lng: null},
+        {label: 'case-75-Ukjent_Kommune(Vestfold og Telemark)', lat: null, lng: null},
+        {label: 'case-76-Ukjent_Kommune(Vestfold og Telemark)', lat: null, lng: null},
+        {label: 'case-77-Oslo', lat: null, lng: null},
+        {label: 'case-78-Oslo', lat: null, lng: null},
+        {label: 'case-79-Oslo', lat: null, lng: null},
+        {label: 'case-80-Oslo', lat: null, lng: null},
+        {label: 'case-81-Trondheim(Trøndelag)', lat: null, lng: null},
+        {label: 'case-82-Trondheim(Trøndelag)', lat: null, lng: null},
+        {label: 'case-83-Trondheim(Trøndelag)', lat: null, lng: null},
+        {label: 'case-84-Trondheim(Trøndelag)', lat: null, lng: null},
+        {label: 'case-85-Trondheim(Trøndelag)', lat: null, lng: null},
+        {label: 'case-86-Drammen(Viken)', lat: null, lng: null},
+        {label: 'case-87-Fredrikstad(Viken)', lat: null, lng: null},
+        {label: 'case-88-Stavanger(Rogaland)', lat: null, lng: null},
       ];
 
       function update_latlng(data) {
@@ -193,12 +212,12 @@
         'Nordland': {'Total': 0},
         'Vestfold og Telemark': {'Total': 0},
         'Trøndelag': {'Total': 0},
-        'Ukjent': {'Total': 0}
+        'Ukjent_Fylke': {'Total': 0}
       };
 
       for (i=0; i<data.length; i++) {
         let area = data[i].label.split('-').pop();
-        if (area == 'Oslo' || area == 'Ukjent') {
+        if (area == 'Oslo' || area == 'Ukjent_Fylke') {
           area_dict[area]['Total'] += 1;
         } else {
           var kommune = area.split('(')[0]
