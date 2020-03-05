@@ -20,17 +20,18 @@
   </head>
   <body>
     <h4>&nbsp;&nbsp;Confirmed ie. tested positive coronavirus infected cases in Norway, zoom in/out or scroll below map for more info.</h4>
-    <h4>&nbsp;&nbsp;Total: <span id='total_number' style="color: red;"></span>, new cases: <span id='new_cases_number' style="color: red;"></span>, cured/recovered <span style="color: green;">0</span>, updated at: <span style="color: blue;">2020-Mar-05 12:00:00</span></h4>
+    <h4>&nbsp;&nbsp;Total: <span id='total_number' style="color: red;"></span>, new cases: <span id='new_cases_number' style="color: red;"></span>, cured/recovered <span style="color: green;">0</span>, updated at: <span style="color: blue;">2020-Mar-05 14:00:00</span></h4>
     <p id="yesterday_number" style="display: none;">63</p>
     <div id="map"></div>
     <div>
     <h4>&nbsp;&nbsp;PLEASE NOTE: This website utilizes public info from FHI, NRK, VG etc. therefore location for individual case can only be traced to kommune level. The location of red marker <img style="width:15px;height:18px;" src=https://recoveryannearundel.org/wp-content/uploads/2016/09/google-maps-marker-for-residencelamontagne-hi.png > CANNOT represent the accurate location of case.</h4>
     <h4>&nbsp;&nbsp;Numbers based on area:</h4>
     <ul id='area_number'></ul>
+    <h4>&nbsp;&nbsp;VG live update:</h4>
+    <ul><li><a href="https://www.vg.no/spesial/2020/corona-viruset/?utm_source=vgfront&utm_content=row-7">https://www.vg.no/spesial/2020/corona-viruset/?utm_source=vgfront&utm_content=row-7</a></li></ul>
     <h4>&nbsp;&nbsp;Sources for this website's data:</h4>
     <ul>
     <!-- <li><a href=""></a></li> -->
-    <li><a href="https://www.vg.no/spesial/2020/corona-viruset/?utm_source=vgfront&utm_content=row-7">utm_source=vgfront&utm_content=row-7</a></li>
     <li><a href="https://www.vg.no/nyheter/innenriks/i/kJO6PQ/fhi-56-personer-er-smittet-i-norge">fhi-56-personer-er-smittet-i-norge</a></li>
     <li><a href="https://www.vg.no/nyheter/innenriks/i/dO2l2z/fhi-fraraader-reiser-til-nord-italia">fhi-fraraader-reiser-til-nord-italia</a></li>
     <li><a href="https://www.fhi.no/nyheter/2020/oppdaterte-tall-pa-antall-smittede-med-koronavirus-i-norge4/">oppdaterte-tall-pa-antall-smittede-med-koronavirus-i-norge4</a></li>
@@ -130,6 +131,12 @@
           {label: 'case-64-Sel(Innlandet)', area: 'Sel(Innlandet)', lat: 61.840969, lng: 9.4252837},
           {label: 'case-65-Frosta(Trøndelag)', area: 'Frosta(Trøndelag)', lat: 63.615650, lng: 10.826420},
           {label: 'case-66-Ålesund(Møre og Romsdal)', area: 'Ålesund(Møre og Romsdal)', lat: 62.471420, lng: 6.148600},
+          {label: 'case-67-Molde(Møre og Romsdal)', area: 'Molde(Møre og Romsdal)', lat: 62.7429118, lng: 7.162816},
+          {label: 'case-68-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3913600, lng: 5.323500},
+          {label: 'case-69-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3913800, lng: 5.323700},
+          {label: 'case-70-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3914000, lng: 5.323900},
+          {label: 'case-71-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3914200, lng: 5.324100},
+          {label: 'case-72-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3914400, lng: 5.324300},
         ]
 
         document.getElementById('total_number').textContent = data.length;
