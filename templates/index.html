@@ -27,8 +27,11 @@
     <h4>&nbsp;&nbsp;PLEASE NOTE: This website utilizes public info from FHI, NRK, VG etc. therefore location for individual case can only be traced to kommune level. The location of red marker <img style="width:15px;height:18px;" src=https://recoveryannearundel.org/wp-content/uploads/2016/09/google-maps-marker-for-residencelamontagne-hi.png > CANNOT represent the accurate location of case.</h4>
     <h4>&nbsp;&nbsp;Numbers based on area:</h4>
     <ul id='area_number'></ul>
-    <h4>&nbsp;&nbsp;VG live update:</h4>
-    <ul><li><a href="https://www.vg.no/spesial/2020/corona-viruset/?utm_source=vgfront&utm_content=row-7">https://www.vg.no/spesial/2020/corona-viruset/?utm_source=vgfront&utm_content=row-7</a></li></ul>
+    <h4>&nbsp;&nbsp;VG live update & FHI nyheter:</h4>
+    <ul>
+    <li><a href="https://www.vg.no/spesial/2020/corona-viruset/?utm_source=vgfront&utm_content=row-7">https://www.vg.no/spesial/2020/corona-viruset/?utm_source=vgfront&utm_content=row-7</a></li>
+    <li><a href="https://www.fhi.no/nyheter/">https://www.fhi.no/nyheter/</a></li>
+    </ul>
     <h4>&nbsp;&nbsp;Sources for this website's data:</h4>
     <ul>
     <!-- <li><a href=""></a></li> -->
@@ -57,146 +60,185 @@
     <br></br>
     <script>
 
+      const latlng_ref = {
+        'Tromsø(Troms og Finnmark)': {lat: 69.6511986, lng: 18.9469733, cnt: 0},
+        'Oslo': {lat: 59.9137808, lng: 10.6450355, cnt: 0},
+        'Bærum(Viken)': {lat: 59.9289092, lng: 10.362972, cnt: 0},
+        'Nes(Viken)': {lat:59.9405272, lng: 10.7061135, cnt: 0},
+        'Enebakk(Viken)': {lat: 59.7691533, lng: 10.9477309, cnt: 0},
+        'Drammen(Viken)': {lat: 59.7297215, lng: 10.1992825, cnt: 0},
+        'Ås(Viken)': {lat: 59.6616895, lng: 10.7556133, cnt: 0},
+        'Asker(Viken)': {lat: 59.9290092, lng: 10.363972, cnt: 0},
+        'Lier(Viken)': {lat: 59.9290292, lng: 10.364172, cnt: 0},
+        'Bergen(Vestland)': {lat: 60.3911568, lng: 5.321325, cnt: 0},
+        'Øygarden(Vestland)': {lat: 60.329089, lng: 5.0528155, cnt: 0},
+        'Stavanger(Rogaland)': {lat: 58.9498173, lng: 5.658187, cnt: 0},
+        'Haugesund(Rogaland)': {lat: 59.4138946, lng: 5.2676924, cnt: 0},
+        'Klepp(Rogaland)': {lat: 58.7629815, lng: 5.6109107, cnt: 0},
+        'Kristiansand(Agder)': {lat: 58.1580637, lng: 7.9730598, cnt: 0},
+        'Trondheim(Trøndelag)': {lat: 63.4163902, lng: 10.4392766, cnt: 0},
+        'Frosta(Trøndelag)': {lat: 63.615650, lng: 10.826420, cnt: 0},
+        'Nord_Fron(Innlandet)': {lat: 61.5598331, lng: 9.5975987, cnt: 0},
+        'Sel(Innlandet)': {lat: 61.840969, lng: 9.4252837, cnt: 0},
+        'Ålesund(Møre og Romsdal)': {lat: 62.471420, lng: 6.148600, cnt: 0},
+        'Molde(Møre og Romsdal)': {lat: 62.7429118, lng: 7.162816, cnt: 0},
+        'Ukjent': {lat: 62.9948397, lng: 7.8752033, cnt: 0},
+      };
+
+      var data = [
+        {label: 'case-1-Tromsø(Troms og Finnmark)', lat: null, lng: null},
+        {label: 'case-2-Oslo', lat: null, lng: null},
+        {label: 'case-3-Oslo', lat: null, lng: null},
+        {label: 'case-4-Oslo', lat: null, lng: null},
+        {label: 'case-5-Bærum(Viken)', lat: null, lng: null},
+        {label: 'case-6-Bergen(Vestland)', lat: null, lng: null},
+        {label: 'case-7-Bergen(Vestland)', lat: null, lng: null},
+        {label: 'case-8-Bergen(Vestland)', lat: null, lng: null},
+        {label: 'case-9-Bergen(Vestland)', lat: null, lng: null},
+        {label: 'case-10-Bergen(Vestland)', lat: null, lng: null},
+        {label: 'case-11-Bergen(Vestland)', lat: null, lng: null},
+        {label: 'case-12-Oslo', lat: null, lng: null},
+        {label: 'case-13-Oslo', lat: null, lng: null},
+        {label: 'case-14-Oslo', lat: null, lng: null},
+        {label: 'case-15-Oslo', lat: null, lng: null},
+        {label: 'case-16-Nes(Viken)', lat: null, lng: null},
+        {label: 'case-17-Enebakk(Viken)', lat: null, lng: null},
+        {label: 'case-18-Enebakk(Viken)', lat: null, lng: null},
+        {label: 'case-19-Enebakk(Viken)', lat: null, lng: null},
+        {label: 'case-20-Stavanger(Rogaland)', lat: null, lng: null},
+        {label: 'case-21-Kristiansand(Agder)', lat: null, lng: null},
+        {label: 'case-22-Kristiansand(Agder)', lat: null, lng: null},
+        {label: 'case-23-Bergen(Vestland)', lat: null, lng: null},
+        {label: 'case-24-Øygarden(Vestland)', lat: null, lng: null},
+        {label: 'case-25-Øygarden(Vestland)', lat: null, lng: null},
+        {label: 'case-26-Drammen(Viken)', lat: null, lng: null},
+        {label: 'case-27-Drammen(Viken)', lat: null, lng: null},
+        {label: 'case-28-Kristiansand(Agder)', lat: null, lng: null},
+        {label: 'case-29-Tromsø(Troms og Finnmark)', lat: null, lng: null},
+        {label: 'case-30-Bergen(Vestland)', lat: null, lng: null},
+        {label: 'case-31-Bergen(Vestland)', lat: null, lng: null},
+        {label: 'case-32-Bergen(Vestland)', lat: null, lng: null},
+        {label: 'case-33-Ås(Viken)', lat: null, lng: null},
+        {label: 'case-34-Trondheim(Trøndelag)', lat: null, lng: null},
+        {label: 'case-35-Drammen(Viken)', lat: null, lng: null},
+        {label: 'case-36-Drammen(Viken)', lat: null, lng: null},
+        {label: 'case-37-Drammen(Viken)', lat: null, lng: null},
+        {label: 'case-38-Drammen(Viken)', lat: null, lng: null},
+        {label: 'case-39-Drammen(Viken)', lat: null, lng: null},
+        {label: 'case-40-Drammen(Viken)', lat: null, lng: null},
+        {label: 'case-41-Haugesund(Rogaland)', lat: null, lng: null},
+        {label: 'case-42-Oslo', lat: null, lng: null},
+        {label: 'case-43-Oslo', lat: null, lng: null},
+        {label: 'case-44-Oslo', lat: null, lng: null},
+        {label: 'case-45-Oslo', lat: null, lng: null},
+        {label: 'case-46-Oslo', lat: null, lng: null},
+        {label: 'case-47-Oslo', lat: null, lng: null},
+        {label: 'case-48-Oslo', lat: null, lng: null},
+        {label: 'case-49-Klepp(Rogaland)', lat: null, lng: null},
+        {label: 'case-50-Bergen(Vestland)', lat: null, lng: null},
+        {label: 'case-51-Bergen(Vestland)', lat: null, lng: null},
+        {label: 'case-52-Bergen(Vestland)', lat: null, lng: null},
+        {label: 'case-53-Bergen(Vestland)', lat: null, lng: null},
+        {label: 'case-54-Bergen(Vestland)', lat: null, lng: null},
+        {label: 'case-55-Nord_Fron(Innlandet)', lat: null, lng: null},
+        {label: 'case-56-Nord_Fron(Innlandet)', lat: null, lng: null},
+        {label: 'case-57-Nord_Fron(Innlandet)', lat: null, lng: null},
+        {label: 'case-58-Bærum(Viken)', lat: null, lng: null},
+        {label: 'case-59-Bærum(Viken)', lat: null, lng: null},
+        {label: 'case-60-Bærum(Viken)', lat: null, lng: null},
+        {label: 'case-61-Asker(Viken)', lat: null, lng: null},
+        {label: 'case-62-Lier(Viken)', lat: null, lng: null},
+        {label: 'case-63-Stavanger(Rogaland)', lat: null, lng: null},
+        {label: 'case-64-Sel(Innlandet)', lat: null, lng: null},
+        {label: 'case-65-Frosta(Trøndelag)', lat: null, lng: null},
+        {label: 'case-66-Ålesund(Møre og Romsdal)', lat: null, lng: null},
+        {label: 'case-67-Molde(Møre og Romsdal)', lat: null, lng: null},
+        {label: 'case-68-Bergen(Vestland)', lat: null, lng: null},
+        {label: 'case-69-Bergen(Vestland)', lat: null, lng: null},
+        {label: 'case-70-Bergen(Vestland)', lat: null, lng: null},
+        {label: 'case-71-Bergen(Vestland)', lat: null, lng: null},
+        {label: 'case-72-Bergen(Vestland)', lat: null, lng: null},
+      ];
+
+      function update_latlng(data) {
+        for (var i=0; i<data.length; i++) {
+          let area = data[i].label.split('-').pop();
+          console.log(area);
+          data[i].lat = latlng_ref[area].lat + 0.0002 * (latlng_ref[area].cnt % 5);
+          data[i].lng = latlng_ref[area].lng + 0.0002 * (Math.floor(latlng_ref[area].cnt/5));
+          latlng_ref[area].cnt += 1;
+        }
+      }
+
+      update_latlng(data);
+      console.log(data);
+
+      document.getElementById('total_number').textContent = data.length;
+      const yesterday_number = parseInt(document.getElementById("yesterday_number").textContent);
+      const new_cases_number = data.length - yesterday_number;
+      document.getElementById('new_cases_number').textContent = new_cases_number;
+
+      const labels = data.map(x => x.label);
+      const locations = data.map(function(x){return {lat: x.lat, lng: x.lng}});
+
+      var area_dict = {
+        'Vestland': {'Total': 0},
+        'Rogaland': {'Total': 0},
+        'Oslo': {'Total': 0},
+        'Viken': {'Total': 0},
+        'Troms og Finnmark': {'Total': 0},
+        'Agder': {'Total': 0},
+        'Innlandet': {'Total': 0},
+        'Møre og Romsdal': {'Total': 0},
+        'Nordland': {'Total': 0},
+        'Vestfold og Telemark': {'Total': 0},
+        'Trøndelag': {'Total': 0},
+        'Ukjent': {'Total': 0}
+      };
+
+      for (i=0; i<data.length; i++) {
+        let area = data[i].label.split('-').pop();
+        if (area == 'Oslo' || area == 'Ukjent') {
+          area_dict[area]['Total'] += 1;
+        } else {
+          var kommune = area.split('(')[0]
+          var fylke = area.split('(')[1].split(')')[0];
+          area_dict[fylke]['Total'] += 1;
+          if (area_dict[fylke][kommune] === undefined) {
+            area_dict[fylke][kommune] = 1;
+          } else {
+            area_dict[fylke][kommune] += 1;
+          }
+        }
+      }
+
+      for (var prop in area_dict) {
+        if (area_dict[prop]['Total'] > 0) {
+          var line = prop + ': ' + area_dict[prop]['Total'];
+          var li = document.createElement("li");
+          li.appendChild(document.createTextNode(line));
+          document.getElementById("area_number").appendChild(li);
+          if (Object.keys(prop).length > 1) {
+            for (var sub_prop in area_dict[prop]) {
+              if (sub_prop != 'Total') {
+                var sub_line = sub_prop + ': ' + area_dict[prop][sub_prop];
+                var sub_ul = document.createElement("ul");
+                var sub_li = document.createElement("li");
+                sub_li.appendChild(document.createTextNode(sub_line));
+                sub_ul.appendChild(sub_li);
+                li.appendChild(sub_ul);
+              }
+            }
+          }
+          }
+      }
+
       function initMap() {
 
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 4,
           center: {lat: 62.3507604, lng: 6.7845958}
         });
-
-        const data = [
-          {label: 'case-1-Tromsø(Troms og Finnmark)', area: 'Tromsø(Troms og Finnmark)', lat: 69.6511986, lng: 18.9469733},
-          {label: 'case-2-Oslo', area: 'Oslo', lat: 59.9137808, lng: 10.6450355},
-          {label: 'case-3-Oslo', area: 'Oslo', lat: 59.9138008, lng: 10.6450555},
-          {label: 'case-4-Oslo', area: 'Oslo', lat: 59.9138208, lng: 10.6450755},
-          {label: 'case-5-Bærum(Viken)', area: 'Bærum(Viken)', lat: 59.9289092, lng: 10.362972},
-          {label: 'case-6-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3911568, lng: 5.321325},
-          {label: 'case-7-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3911768, lng: 5.321525},
-          {label: 'case-8-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3911968, lng: 5.321725},
-          {label: 'case-9-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3912168, lng: 5.321925},
-          {label: 'case-10-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3912368, lng: 5.322125},
-          {label: 'case-11-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3912568, lng: 5.322325},
-          {label: 'case-12-Oslo', area: 'Oslo', lat: 59.9138408, lng: 10.6450955},
-          {label: 'case-13-Oslo', area: 'Oslo', lat: 59.9138608, lng: 10.6451155},
-          {label: 'case-14-Oslo', area: 'Oslo', lat: 59.9138808, lng: 10.6451355},
-          {label: 'case-15-Oslo', area: 'Oslo', lat: 59.9139008, lng: 10.6451555},
-          {label: 'case-16-Nes(Viken)', area: 'Nes(Viken)', lat:59.9405272, lng: 10.7061135},
-          {label: 'case-17-Enebakk(Viken)', area: 'Enebakk(Viken)', lat: 59.7691533, lng: 10.9477309},
-          {label: 'case-18-Enebakk(Viken)', area: 'Enebakk(Viken)', lat: 59.7691733, lng: 10.9477509},
-          {label: 'case-19-Enebakk(Viken)', area: 'Enebakk(Viken)', lat: 59.7691933, lng: 10.9477709},
-          {label: 'case-20-Stavanger(Rogaland)', area: 'Stavanger(Rogaland)', lat: 58.9498173, lng: 5.658187},
-          {label: 'case-21-Kristiansand(Agder)', area: 'Kristiansand(Agder)', lat: 58.1580637, lng: 7.9730598},
-          {label: 'case-22-Kristiansand(Agder)', area: 'Kristiansand(Agder)', lat: 58.1580837, lng: 7.9730798},
-          {label: 'case-23-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3912768, lng: 5.322525},
-          {label: 'case-24-Øygarden(Vestland)', area: 'Øygarden(Vestland)', lat: 60.329089, lng: 5.0528155},
-          {label: 'case-25-Øygarden(Vestland)', area: 'Øygarden(Vestland)', lat: 60.329279, lng: 5.0528355},
-          {label: 'case-26-Drammen(Viken)', area: 'Drammen(Viken)', lat: 59.7297215, lng: 10.1992825},
-          {label: 'case-27-Drammen(Viken)', area: 'Drammen(Viken)', lat: 59.7297415, lng: 10.1993025},
-          {label: 'case-28-Kristiansand(Agder)', area: 'Kristiansand(Agder)', lat: 58.1581037, lng: 7.9730998},
-          {label: 'case-29-Tromsø(Troms og Finnmark)', area: 'Tromsø(Troms og Finnmark)', lat: 69.6512186, lng: 18.9469933},
-          {label: 'case-30-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3931568, lng: 5.331325},
-          {label: 'case-31-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3931768, lng: 5.331525},
-          {label: 'case-32-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3931968, lng: 5.331725},
-          {label: 'case-33-Ås(Viken)', area: 'Ås(Viken)', lat: 59.6616895, lng: 10.7556133},
-          {label: 'case-34-Trondheim(Trøndelag)', area: 'Trondheim(Trøndelag)', lat: 63.4163902, lng: 10.4392766},
-          {label: 'case-35-Drammen(Viken)', area: 'Drammen(Viken)', lat: 59.7296000, lng: 10.1993000},
-          {label: 'case-36-Drammen(Viken)', area: 'Drammen(Viken)', lat: 59.7296200, lng: 10.1993200},
-          {label: 'case-37-Drammen(Viken)', area: 'Drammen(Viken)', lat: 59.7296400, lng: 10.1993400},
-          {label: 'case-38-Drammen(Viken)', area: 'Drammen(Viken)', lat: 59.7296600, lng: 10.1993600},
-          {label: 'case-39-Drammen(Viken)', area: 'Drammen(Viken)', lat: 59.7296800, lng: 10.1993800},
-          {label: 'case-40-Drammen(Viken)', area: 'Drammen(Viken)', lat: 59.7297000, lng: 10.1994000},
-          {label: 'case-41-Haugesund(Rogaland)', area: 'Haugesund(Rogaland)', lat: 59.4138946, lng: 5.2676924},
-          {label: 'case-42-Oslo', area: 'Oslo', lat: 59.9139208, lng: 10.6451755},
-          {label: 'case-43-Oslo', area: 'Oslo', lat: 59.9139408, lng: 10.6451955},
-          {label: 'case-44-Oslo', area: 'Oslo', lat: 59.9139608, lng: 10.6452155},
-          {label: 'case-45-Oslo', area: 'Oslo', lat: 59.9139808, lng: 10.6452355},
-          {label: 'case-46-Oslo', area: 'Oslo', lat: 59.9140008, lng: 10.6452555},
-          {label: 'case-47-Oslo', area: 'Oslo', lat: 59.9140208, lng: 10.6452755},
-          {label: 'case-48-Oslo', area: 'Oslo', lat: 59.9140408, lng: 10.6452955},
-          {label: 'case-49-Klepp(Rogaland)', area: 'Klepp(Rogaland)', lat: 58.7629815, lng: 5.6109107},
-          {label: 'case-50-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3912768, lng: 5.322525},
-          {label: 'case-51-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3912968, lng: 5.322725},
-          {label: 'case-52-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3913168, lng: 5.322925},
-          {label: 'case-53-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3913368, lng: 5.323125},
-          {label: 'case-54-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3913568, lng: 5.323325},
-          {label: 'case-55-Nord-Fron(Innlandet)', area: 'Nord-Fron(Innlandet)', lat: 61.5598331, lng: 9.5975987},
-          {label: 'case-56-Nord-Fron(Innlandet)', area: 'Nord-Fron(Innlandet)', lat: 61.5598531, lng: 9.5976187},
-          {label: 'case-57-Nord-Fron(Innlandet)', area: 'Nord-Fron(Innlandet)', lat: 61.5598731, lng: 9.5976387},
-          {label: 'case-58-Bærum(Viken)', area: 'Bærum(Viken)', lat: 59.9289492, lng: 10.363372},
-          {label: 'case-59-Bærum(Viken)', area: 'Bærum(Viken)', lat: 59.9289692, lng: 10.363572},
-          {label: 'case-60-Bærum(Viken)', area: 'Bærum(Viken)', lat: 59.9289892, lng: 10.363772},
-          {label: 'case-61-Asker(Viken)', area: 'Asker(Viken)', lat: 59.9290092, lng: 10.363972},
-          {label: 'case-62-Lier(Viken)', area: 'Lier(Viken)', lat: 59.9290292, lng: 10.364172},
-          {label: 'case-63-Stavanger(Rogaland)', area: 'Stavanger(Rogaland)', lat: 58.9498373, lng: 5.658387},
-          {label: 'case-64-Sel(Innlandet)', area: 'Sel(Innlandet)', lat: 61.840969, lng: 9.4252837},
-          {label: 'case-65-Frosta(Trøndelag)', area: 'Frosta(Trøndelag)', lat: 63.615650, lng: 10.826420},
-          {label: 'case-66-Ålesund(Møre og Romsdal)', area: 'Ålesund(Møre og Romsdal)', lat: 62.471420, lng: 6.148600},
-          {label: 'case-67-Molde(Møre og Romsdal)', area: 'Molde(Møre og Romsdal)', lat: 62.7429118, lng: 7.162816},
-          {label: 'case-68-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3913600, lng: 5.323500},
-          {label: 'case-69-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3913800, lng: 5.323700},
-          {label: 'case-70-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3914000, lng: 5.323900},
-          {label: 'case-71-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3914200, lng: 5.324100},
-          {label: 'case-72-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3914400, lng: 5.324300},
-        ]
-
-        document.getElementById('total_number').textContent = data.length;
-        const yesterday_number = parseInt(document.getElementById("yesterday_number").textContent);
-        const new_cases_number = data.length - yesterday_number;
-        document.getElementById('new_cases_number').textContent = new_cases_number;
-
-        const labels = data.map(x => x.label);
-        const locations = data.map(function(x){return {lat: x.lat, lng: x.lng}});
-
-        var area_dict = {
-          'Vestland': {'Total': 0},
-          'Rogaland': {'Total': 0},
-          'Oslo': {'Total': 0},
-          'Viken': {'Total': 0},
-          'Troms og Finnmark': {'Total': 0},
-          'Agder': {'Total': 0},
-          'Innlandet': {'Total': 0},
-          'Møre og Romsdal': {'Total': 0},
-          'Nordland': {'Total': 0},
-          'Vestfold og Telemark': {'Total': 0},
-          'Trøndelag': {'Total': 0},
-          'Ukjent': {'Total': 0}
-        };
-
-        for (i=0; i<data.length; i++) {
-          if (data[i].area == 'Oslo' || data[i].area == 'Ukjent') {
-            area_dict[data[i].area]['Total'] += 1;
-          } else {
-            var kommune = data[i].area.split('(')[0]
-            var fylke = data[i].area.split('(')[1].split(')')[0];
-            area_dict[fylke]['Total'] += 1;
-            if (area_dict[fylke][kommune] === undefined) {
-              area_dict[fylke][kommune] = 1;
-            } else {
-              area_dict[fylke][kommune] += 1;
-            }
-          }
-        }
-
-        for (var prop in area_dict) {
-          if (area_dict[prop]['Total'] > 0) {
-            var line = prop + ': ' + area_dict[prop]['Total'];
-            var li = document.createElement("li");
-            li.appendChild(document.createTextNode(line));
-            document.getElementById("area_number").appendChild(li);
-            if (Object.keys(prop).length > 1) {
-              for (var sub_prop in area_dict[prop]) {
-                if (sub_prop != 'Total') {
-                  var sub_line = sub_prop + ': ' + area_dict[prop][sub_prop];
-                  var sub_ul = document.createElement("ul");
-                  var sub_li = document.createElement("li");
-                  sub_li.appendChild(document.createTextNode(sub_line));
-                  sub_ul.appendChild(sub_li);
-                  li.appendChild(sub_ul);
-                }
-              }
-            }
-            }
-          }
 
         // Add some markers to the map.
         // Note: The code uses the JavaScript Array.prototype.map() method to
