@@ -20,8 +20,8 @@
   </head>
   <body>
     <h4>&nbsp;&nbsp;Confirmed ie. tested positive coronavirus infected cases in Norway, zoom in/out or scroll below map for more info.</h4>
-    <h4>&nbsp;&nbsp;Total: <span id='total_number' style="color: red;"></span>, new cases: <span id='new_cases_number' style="color: red;"></span>, cured/recovered <span style="color: green;">0</span>, updated at: <span style="color: blue;">2020-Mar-05 00:00:15</span></h4>
-    <p id="yesterday_number" style="display: none;">56</p>
+    <h4>&nbsp;&nbsp;Total: <span id='total_number' style="color: red;"></span>, new cases: <span id='new_cases_number' style="color: red;"></span>, cured/recovered <span style="color: green;">0</span>, updated at: <span style="color: blue;">2020-Mar-05 12:00:00</span></h4>
+    <p id="yesterday_number" style="display: none;">63</p>
     <div id="map"></div>
     <div>
     <h4>&nbsp;&nbsp;PLEASE NOTE: This website utilizes public info from FHI, NRK, VG etc. therefore location for individual case can only be traced to kommune level. The location of red marker <img style="width:15px;height:18px;" src=https://recoveryannearundel.org/wp-content/uploads/2016/09/google-maps-marker-for-residencelamontagne-hi.png > CANNOT represent the accurate location of case.</h4>
@@ -30,6 +30,7 @@
     <h4>&nbsp;&nbsp;Sources for this website's data:</h4>
     <ul>
     <!-- <li><a href=""></a></li> -->
+    <li><a href="https://www.vg.no/spesial/2020/corona-viruset/?utm_source=vgfront&utm_content=row-7">utm_source=vgfront&utm_content=row-7</a></li>
     <li><a href="https://www.vg.no/nyheter/innenriks/i/kJO6PQ/fhi-56-personer-er-smittet-i-norge">fhi-56-personer-er-smittet-i-norge</a></li>
     <li><a href="https://www.vg.no/nyheter/innenriks/i/dO2l2z/fhi-fraraader-reiser-til-nord-italia">fhi-fraraader-reiser-til-nord-italia</a></li>
     <li><a href="https://www.fhi.no/nyheter/2020/oppdaterte-tall-pa-antall-smittede-med-koronavirus-i-norge4/">oppdaterte-tall-pa-antall-smittede-med-koronavirus-i-norge4</a></li>
@@ -117,11 +118,18 @@
           {label: 'case-52-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3913168, lng: 5.322925},
           {label: 'case-53-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3913368, lng: 5.323125},
           {label: 'case-54-Bergen(Vestland)', area: 'Bergen(Vestland)', lat: 60.3913568, lng: 5.323325},
-          {label: 'case-55-Ukjent', area: 'Ukjent', lat: 62.3507604, lng: 6.7845958},
-          {label: 'case-56-Ukjent', area: 'Ukjent', lat: 62.3507804, lng: 6.7846158},
-          {label: 'case-57-Bærum(Viken)', area: 'Bærum(Viken)', lat: 59.9289292, lng: 10.363172},
+          {label: 'case-55-Nord-Fron(Innlandet)', area: 'Nord-Fron(Innlandet)', lat: 61.5598331, lng: 9.5975987},
+          {label: 'case-56-Nord-Fron(Innlandet)', area: 'Nord-Fron(Innlandet)', lat: 61.5598531, lng: 9.5976187},
+          {label: 'case-57-Nord-Fron(Innlandet)', area: 'Nord-Fron(Innlandet)', lat: 61.5598731, lng: 9.5976387},
           {label: 'case-58-Bærum(Viken)', area: 'Bærum(Viken)', lat: 59.9289492, lng: 10.363372},
           {label: 'case-59-Bærum(Viken)', area: 'Bærum(Viken)', lat: 59.9289692, lng: 10.363572},
+          {label: 'case-60-Bærum(Viken)', area: 'Bærum(Viken)', lat: 59.9289892, lng: 10.363772},
+          {label: 'case-61-Asker(Viken)', area: 'Asker(Viken)', lat: 59.9290092, lng: 10.363972},
+          {label: 'case-62-Lier(Viken)', area: 'Lier(Viken)', lat: 59.9290292, lng: 10.364172},
+          {label: 'case-63-Stavanger(Rogaland)', area: 'Stavanger(Rogaland)', lat: 58.9498373, lng: 5.658387},
+          {label: 'case-64-Sel(Innlandet)', area: 'Sel(Innlandet)', lat: 61.840969, lng: 9.4252837},
+          {label: 'case-65-Frosta(Trøndelag)', area: 'Frosta(Trøndelag)', lat: 63.615650, lng: 10.826420},
+          {label: 'case-66-Ålesund(Møre og Romsdal)', area: 'Ålesund(Møre og Romsdal)', lat: 62.471420, lng: 6.148600},
         ]
 
         document.getElementById('total_number').textContent = data.length;
