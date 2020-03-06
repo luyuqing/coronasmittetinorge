@@ -20,7 +20,7 @@
   </head>
   <body>
     <h4>&nbsp;&nbsp;Confirmed ie. tested positive coronavirus infected cases in Norway, zoom in/out or scroll below map for more info.</h4>
-    <h4>&nbsp;&nbsp;Total: <span id='total_number' style="color: red;"></span>, new cases: <span id='new_cases_number' style="color: red;"></span>, cured/recovered <span style="color: green;">0</span>, updated at: <span style="color: blue;">2020-Mar-05 20:00:00</span></h4>
+    <h4>&nbsp;&nbsp;Date: <span style="color: blue;">2020-Mar-05</span>, total: <span id='total_number' style="color: red;"></span>, new cases: <span id='new_cases_number' style="color: red;"></span>, cured/recovered <span style="color: green;">0</span></h4>
     <p id="yesterday_number" style="display: none;">63</p>
     <div id="map"></div>
     <div>
@@ -35,6 +35,8 @@
     <h4>&nbsp;&nbsp;Sources for this website's data:</h4>
     <ul>
     <!-- <li><a href=""></a></li> -->
+    <li><a href="https://www.vg.no/spesial/2020/corona-viruset/?utm_source=vgfront&utm_content=row-7">https://www.vg.no/spesial/2020/corona-viruset/?utm_source=vgfront&utm_content=row-7</a></li>
+    <li><a href="https://www.fhi.no/nyheter/">https://www.fhi.no/nyheter/</a></li>
     <li><a href="https://www.vg.no/nyheter/innenriks/i/kJO6PQ/fhi-56-personer-er-smittet-i-norge">fhi-56-personer-er-smittet-i-norge</a></li>
     <li><a href="https://www.vg.no/nyheter/innenriks/i/dO2l2z/fhi-fraraader-reiser-til-nord-italia">fhi-fraraader-reiser-til-nord-italia</a></li>
     <li><a href="https://www.fhi.no/nyheter/2020/oppdaterte-tall-pa-antall-smittede-med-koronavirus-i-norge4/">oppdaterte-tall-pa-antall-smittede-med-koronavirus-i-norge4</a></li>
@@ -76,6 +78,7 @@
         'Stavanger(Rogaland)': {lat: 58.9498173, lng: 5.658187, cnt: 0},
         'Haugesund(Rogaland)': {lat: 59.4138946, lng: 5.2676924, cnt: 0},
         'Klepp(Rogaland)': {lat: 58.7629815, lng: 5.6109107, cnt: 0},
+        'Sandnes(Rogaland)': {lat:58.8404776, lng: 5.7247628, cnt: 0},
         'Kristiansand(Agder)': {lat: 58.1580637, lng: 7.9730598, cnt: 0},
         'Trondheim(Trøndelag)': {lat: 63.4163902, lng: 10.4392766, cnt: 0},
         'Frosta(Trøndelag)': {lat: 63.615650, lng: 10.826420, cnt: 0},
@@ -155,28 +158,34 @@
         {label: 'case-64-Sel(Innlandet)', lat: null, lng: null},
         {label: 'case-65-Frosta(Trøndelag)', lat: null, lng: null},
         {label: 'case-66-Ålesund(Møre og Romsdal)', lat: null, lng: null},
-        {label: 'case-67-Molde(Møre og Romsdal)', lat: null, lng: null},
+        {label: 'case-67-Bergen(Vestland)', lat: null, lng: null},
         {label: 'case-68-Bergen(Vestland)', lat: null, lng: null},
         {label: 'case-69-Bergen(Vestland)', lat: null, lng: null},
         {label: 'case-70-Bergen(Vestland)', lat: null, lng: null},
         {label: 'case-71-Bergen(Vestland)', lat: null, lng: null},
-        {label: 'case-72-Bergen(Vestland)', lat: null, lng: null},
-        {label: 'case-73-Skien(Vestfold og Telemark)', lat: null, lng: null},
-        {label: 'case-74-Ukjent_Kommune(Vestfold og Telemark)', lat: null, lng: null},
+        {label: 'case-72-Skien(Vestfold og Telemark)', lat: null, lng: null},
+        {label: 'case-73-Kristiansand(Agder)', lat: null, lng: null},
+        {label: 'case-74-Kristiansand(Agder)', lat: null, lng: null},
         {label: 'case-75-Ukjent_Kommune(Vestfold og Telemark)', lat: null, lng: null},
-        {label: 'case-76-Ukjent_Kommune(Vestfold og Telemark)', lat: null, lng: null},
+        {label: 'case-76-Oslo', lat: null, lng: null},
         {label: 'case-77-Oslo', lat: null, lng: null},
         {label: 'case-78-Oslo', lat: null, lng: null},
         {label: 'case-79-Oslo', lat: null, lng: null},
-        {label: 'case-80-Oslo', lat: null, lng: null},
+        {label: 'case-80-Trondheim(Trøndelag)', lat: null, lng: null},
         {label: 'case-81-Trondheim(Trøndelag)', lat: null, lng: null},
         {label: 'case-82-Trondheim(Trøndelag)', lat: null, lng: null},
         {label: 'case-83-Trondheim(Trøndelag)', lat: null, lng: null},
         {label: 'case-84-Trondheim(Trøndelag)', lat: null, lng: null},
-        {label: 'case-85-Trondheim(Trøndelag)', lat: null, lng: null},
-        {label: 'case-86-Drammen(Viken)', lat: null, lng: null},
-        {label: 'case-87-Fredrikstad(Viken)', lat: null, lng: null},
-        {label: 'case-88-Stavanger(Rogaland)', lat: null, lng: null},
+        {label: 'case-85-Drammen(Viken)', lat: null, lng: null},
+        {label: 'case-86-Fredrikstad(Viken)', lat: null, lng: null},
+        {label: 'case-87-Stavanger(Rogaland)', lat: null, lng: null},
+        {label: 'case-88-Sandnes(Rogaland)', lat: null, lng: null},
+        {label: 'case-89-Stavanger(Rogaland)', lat: null, lng: null},
+        {label: 'case-90-Stavanger(Rogaland)', lat: null, lng: null},
+        {label: 'case-91-Asker(Viken)', lat: null, lng: null},
+        {label: 'case-92-Asker(Viken)', lat: null, lng: null},
+        {label: 'case-93-Kristiansand(Agder)', lat: null, lng: null},
+        {label: 'case-94-Kristiansand(Agder)', lat: null, lng: null},
       ];
 
       function update_latlng(data) {
